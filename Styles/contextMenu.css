@@ -20,8 +20,8 @@
     cursor: pointer;
 }
 #main-context-menu .item-c-mm:hover{
-    background-color: #130f40;
-    color: lightcoral;
+    background-color: #0c0a1d;
+    color: rgb(0, 183, 255);
 }
 .hidden-input{
     display: none;

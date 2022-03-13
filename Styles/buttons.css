@@ -1,18 +1,20 @@
-
 .buttons-container{
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
+    display: none;
+}
+/* .buttons-container{
+    display: none;
     justify-content: flex-start;
-    gap: 2rem;
+    position: fixed;
+    bottom: 4px;
+    right: 16rem;
+    gap: 1rem;
 }
 .main-btns{
     border: none;
     outline: none;
     border: 3px solid whitesmoke;
     padding: .5rem;
+    font-size: 1rem;
     cursor: pointer;
     color: azure;
     border-radius: 1rem;
@@ -21,14 +23,14 @@
 }
 .main-btns:hover{
     background-color: #130f40;
-    color: lightcoral;
+    color: crimson;
     border: 3px solid beige;
     transform: scale(1.1);
 }
 .main-btns:active{
     box-shadow: 0px 0px 4px 4px rgba(255,255,255,0.75);
 }
-
+ */
 
 .pop-up-btns,.pop-up-btns-2 ,.pop-up-btns-4{
     background-color: white;

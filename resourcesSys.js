@@ -4,6 +4,7 @@ let resourceMainTemplate = document.querySelector(".resources-template");
 let breadCrumbMainTemplate = document.querySelector(".breadcrumb-template");
 let breadCrumb = document.querySelector(".bread-crumb-container");
 let resourcesContainer = document.querySelector(".resources-container");
+const homeBtn = document.querySelector("#home-btn");
 
 let resources = [];
 let cfid = -1;
@@ -25,8 +26,7 @@ addFolderBtn.addEventListener("click", () => {
     resourceTypeToBeAdded = 1;
     typeOfInput = 1;
     if (breadCrumb.style.opacity == 0) {
-        alert("Navigate to home (from sidebar). Can not create a folder here!!!");
-        return;
+        homeBtn.click();
     }
     takeUserInput();
 });
@@ -34,8 +34,7 @@ addFileBtn.addEventListener("click", () => {
     resourceTypeToBeAdded = 2;
     typeOfInput = 1;
     if (breadCrumb.style.opacity == 0) {
-        alert("Navigate to home (from sidebar). Can not create a file here!!!");
-        return;
+        homeBtn.click();
     }
     takeUserInput();
 });
@@ -43,8 +42,7 @@ addAlbumBtn.addEventListener("click", () => {
     resourceTypeToBeAdded = 3;
     typeOfInput = 1;
     if (breadCrumb.style.opacity == 0) {
-        alert("Navigate to home (from sidebar). Can not create an album here!!!");
-        return;
+        homeBtn.click();
     }
     takeUserInput();
 });
@@ -291,6 +289,7 @@ function takeUserInput(resBox) {
 
     function openPopup() {
         popup.classList.add("active");
+        input.focus();
         overlay.classList.add("active");
     }
 
@@ -411,18 +410,14 @@ changeBgBtn.addEventListener("change", (e) => {
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundImage = `url(${uploadedImg})`;
-        document.querySelector(".search-bar-container").style.backgroundImage = "none";
-        document.querySelector(".search-bar-container").style.backgroundColor = "rgba(19,19,19,.507)";
         let bgImgObj = { imgSrc: uploadedImg };
         localStorage.setItem("bgUserSrc", JSON.stringify(bgImgObj));
     })
-    if(!e.target.files[0].name.split(".").includes("jpg"||"jpeg"||"png")) return;
+    if (!e.target.files[0].name.split(".").includes("jpg" || "jpeg" || "png")) return;
     reader.readAsDataURL(e.target.files[0]);
 })
 resetBg.addEventListener("click", () => {
-    document.body.style.backgroundImage = `none`;
-    document.body.style.backgroundColor = "#202124";
-    document.querySelector(".search-bar-container").style.backgroundImage = "linear-gradient(90deg, black 0%, #202124 100%)";
+    document.body.style.backgroundImage = `url(${'./Images/BG.jpg'})`;
     if (localStorage.getItem("bgUserSrc") !== null) {
         localStorage.removeItem("bgUserSrc");
     }
@@ -436,9 +431,10 @@ function loadBgFromLocalStorage() {
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundImage = `url(${bgImg.imgSrc})`;
-        document.querySelector(".search-bar-container").style.backgroundImage = "none";
-        document.querySelector(".search-bar-container").style.backgroundColor = "rgba(19,19,19,.507)";
-        breadCrumb.style.backgroundColor = "black";
+    } else {
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundImage = `url(${'./Images/BG.jpg'})`;
     }
 }
 loadBgFromLocalStorage();
@@ -452,15 +448,18 @@ document.body.addEventListener('contextmenu', function (e) {
     for (let i = 0; i < e.composedPath().length; i++) {
         if (e.composedPath()[i].classList?.length > 0) {
             const arr = Array.from(e.composedPath()[i].classList);
-            if (arr.includes("search-bar-container")||arr.includes("sidebar-container")) {
+            if (arr.includes("search-bar-container") || arr.includes("sidebar-container") || arr.includes("bread-crumb-container")){
                 return;
             }
         }
     }
     const overlay = document.querySelector("#overlay");
-    if(overlay.classList.contains("active")) return;
+    if (overlay.classList.contains("active")) return;
 
-    
+    const isGuideOpen = document.querySelector("#htu-container");
+    if(isGuideOpen.classList.contains("active")) return;
+
+
     const mainContext = document.querySelector("#main-context-menu");
     mainContext.style.top = e.pageY + "px";
     mainContext.style.left = (e.pageX) + "px";

@@ -1,18 +1,16 @@
 .bread-crumb-container{
     pointer-events: none;
-    width: fit-content;
-    height:fit-content ;
-    margin-top: 1rem;
-    margin-left: 20%;
-    margin-right: 20%;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    width: 100vw;
     display: flex;
+    height: 3rem;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     color: whitesmoke;
+    margin: auto;
     border-bottom: 2px solid #c3c5c7;
-    padding-left: .5rem;
-    padding-right: .5rem;
     gap:.25rem;
     background-color: black;
     z-index: 1000;

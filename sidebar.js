@@ -1,26 +1,26 @@
-(function(){
-    let sidebarBtn = document.querySelector(".sidebar-btn");
-    let sidebarContainer = document.querySelector(".sidebar-container");
-    let isSideBarOpen = true;
-    sidebarBtn.addEventListener("click", toggleSideBar);
+// (function(){
+    // let sidebarBtn = document.querySelector(".sidebar-btn");
+    // let sidebarContainer = document.querySelector(".sidebar-container");
+    // let isSideBarOpen = false;
+    // sidebarBtn.addEventListener("click", toggleSideBar);
     
-    toggleSideBar();
-    
-    function toggleSideBar() {
-        if (isSideBarOpen) {
-            sidebarContainer.classList.toggle("active");
-            sidebarBtn.innerHTML="&#10005;"
-            sidebarBtn.style.fontSize = "2rem";
-            sidebarBtn.style.top = "3rem";
-        } else {
-            sidebarContainer.classList.toggle("active");
-            sidebarBtn.innerHTML="&equiv;"
-            sidebarBtn.style.fontSize = "3rem";
-            sidebarBtn.style.top = "2rem";
-        }
-        isSideBarOpen = !isSideBarOpen;
-    }
-})();
+    // function toggleSideBar() {
+    //     if (isSideBarOpen) {
+    //         sidebarContainer.classList.toggle("active");
+    //         sidebarBtn.innerHTML=`<span class="material-icons">menu</span>`
+    //     } else {
+    //         sidebarContainer.classList.toggle("active");
+    //         sidebarBtn.innerHTML=`<span class="material-icons">close</span>`
+    //     }
+    //     isSideBarOpen = !isSideBarOpen;
+    // }
+    // sidebarContainer.addEventListener("mouseleave",toggleSideBar);
+// })();
+const setTime = document.querySelector("#set-time");
+setTime.innerHTML = new Date().toLocaleTimeString([], {timeStyle: 'short'});
+setInterval(()=>{
+    setTime.innerHTML = new Date().toLocaleTimeString([], {timeStyle: 'short'});
+},30*1000)
 
 let rootSBtn = document.querySelector(".root-list");
 let folderSBtn = document.querySelector(".folder-list");
@@ -42,7 +42,7 @@ folderSBtn.addEventListener("click",()=>{
     breadCrumb.style.opacity = "0";
     breadCrumb.style['pointer-events'] = 'none';
     if(onlyFoldersArray.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white;'>No Folders Found</div>`;
+        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Folders Found</div>`;
         return;
     }
     addWithArray(onlyFoldersArray,-2);
@@ -53,7 +53,7 @@ fileSBtn.addEventListener("click",()=>{
     breadCrumb.style.opacity = "0";
     breadCrumb.style['pointer-events'] = 'none';
     if(onlyFilesArray.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white;'>No Files Found</div>`;
+        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Files Found</div>`;
         return;
     }
     addWithArray(onlyFilesArray,-2);
@@ -65,8 +65,19 @@ albumSBtn.addEventListener("click",()=>{
     breadCrumb.style.opacity = "0";
     breadCrumb.style['pointer-events'] = 'none';
     if(onlyAlbumsArray.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white;'>No Albums Found</div>`;
+        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Albums Found</div>`;
         return;
     }
     addWithArray(onlyAlbumsArray,-2);
 })
+
+
+const homeBtnBar = document.querySelector("#home-bar-btn");
+const folderBtnBar = document.querySelector("#folder-bar-btn");
+const fileBtnBar = document.querySelector("#file-bar-btn");
+const albumBtnBar = document.querySelector("#album-bar-btn");
+
+homeBtnBar.addEventListener("click",()=>rootSBtn.click());
+folderBtnBar.addEventListener("click",()=>folderSBtn.click());
+fileBtnBar.addEventListener("click",()=>fileSBtn.click());
+albumBtnBar.addEventListener("click",()=>albumSBtn.click());
