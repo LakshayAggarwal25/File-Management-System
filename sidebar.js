@@ -16,6 +16,8 @@
     // }
     // sidebarContainer.addEventListener("mouseleave",toggleSideBar);
 // })();
+const styleString = `color:white; background-color:black; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-size:2rem; border-radius:1rem; padding:1rem;`;
+
 const setTime = document.querySelector("#set-time");
 setTime.innerHTML = new Date().toLocaleTimeString([], {timeStyle: 'short'});
 setInterval(()=>{
@@ -42,7 +44,7 @@ folderSBtn.addEventListener("click",()=>{
     breadCrumb.style.opacity = "0";
     breadCrumb.style['pointer-events'] = 'none';
     if(onlyFoldersArray.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Folders Found</div>`;
+        resourcesContainer.innerHTML = `<div style='${styleString}'>No Folders Found</div>`;
         return;
     }
     addWithArray(onlyFoldersArray,-2);
@@ -53,7 +55,7 @@ fileSBtn.addEventListener("click",()=>{
     breadCrumb.style.opacity = "0";
     breadCrumb.style['pointer-events'] = 'none';
     if(onlyFilesArray.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Files Found</div>`;
+        resourcesContainer.innerHTML = `<div style='${styleString}'>No Files Found</div>`;
         return;
     }
     addWithArray(onlyFilesArray,-2);
@@ -65,7 +67,7 @@ albumSBtn.addEventListener("click",()=>{
     breadCrumb.style.opacity = "0";
     breadCrumb.style['pointer-events'] = 'none';
     if(onlyAlbumsArray.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Albums Found</div>`;
+        resourcesContainer.innerHTML = `<div style='${styleString}'>No Albums Found</div>`;
         return;
     }
     addWithArray(onlyAlbumsArray,-2);

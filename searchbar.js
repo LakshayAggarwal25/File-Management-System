@@ -32,7 +32,7 @@ searchBtn.addEventListener("click",()=>{
     arr = arr.concat(arr2);
 
     if(arr.length == 0){
-        resourcesContainer.innerHTML = `<div style='color:white; background-color:black'>No Matching Results Found</div>`;
+        resourcesContainer.innerHTML = `<div style='${styleString}'>No Matching Results Found</div>`;
         return;
     }
     addWithArray(arr,-2);

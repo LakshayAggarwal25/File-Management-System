@@ -458,7 +458,9 @@ document.body.addEventListener('contextmenu', function (e) {
 
     const isGuideOpen = document.querySelector("#htu-container");
     if(isGuideOpen.classList.contains("active")) return;
-
+    
+    const isWelcomeCardOpen = document.querySelector("#welcome-card");
+    if(isWelcomeCardOpen.classList.contains("active")) return;
 
     const mainContext = document.querySelector("#main-context-menu");
     mainContext.style.top = e.pageY + "px";

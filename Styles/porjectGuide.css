@@ -9,6 +9,9 @@
     transform: scale(1);
     transition: all 250ms ease-in-out;
 }
+.project-guide-container.closed{
+   transform: scale(0);
+}
 .guide-box{
     position: relative;
     background-color: aliceblue;
