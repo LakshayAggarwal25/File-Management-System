@@ -21,7 +21,6 @@ closeWelCard.addEventListener("click",()=>{
 
 (function(){
     const newUserCheck = localStorage.getItem("isNewUser");
-    console.log(newUserCheck);
     if(newUserCheck){
         welcomeCard.classList.remove("active");
         welcomeCard.style.transform = "scale(0)";
